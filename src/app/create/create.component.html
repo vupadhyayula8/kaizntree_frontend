@@ -1,0 +1,28 @@
+<div class ="logo-container">
+    <img class = "logo" src = "../../assets/images/kaizntree.png"/>
+</div>
+<div class = "login">
+    <mat-card>
+        <div class = "form">
+            <form [formGroup]="registerForm" (ngSubmit)="OnSubmit()">
+                <div>
+                    <mat-label>Username </mat-label>
+                    <input mat-Input formControlName="name" name="name">
+                </div>
+                <div>
+                    <mat-label>Password </mat-label>
+                    <input mat-Input formControlName="password" name="password" type="password">
+                </div>
+                <div>
+                    <mat-label>Re-enter Password </mat-label>
+                    <input mat-Input formControlName="confirmpassword" name="confirmpassword" type="password">
+                </div>
+                <mat-error *ngIf="registerForm.get('name')?.hasError('pattern')">Only alphabets and numbers are
+                    allowed</mat-error>
+                <div>
+                    <button mat-raised-button>Create Account</button>
+                </div>
+            </form>
+        </div>
+    </mat-card>
+</div>
