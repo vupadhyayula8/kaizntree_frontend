@@ -16,7 +16,8 @@ export class LoginComponent {
  name : new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z0-9]+$')]),
  password :new FormControl('',[Validators.required,Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$')])
 })
- registerFormShow = false;
+hide = true;
+error:string = "";
   OnSubmit()
   {
     if(this.loginForm.valid)
@@ -25,15 +26,22 @@ export class LoginComponent {
       this.apiService.login(this.loginForm.value.name,this.loginForm.value.password).subscribe(
         (resp:any)=>
         {
-          console.log(resp);
-          if(resp == true)
+          console.log('response is', resp);
+          console.log('statis is', resp.status)
+          if(resp.status)
           {
+            console.log("ok response");
             this.isAuthenticated = true;
             localStorage.setItem('isLoggedIn','true');
             const x = this.loginForm.value.name;
             if(x != null)
               localStorage.setItem('token', x ); 
             this.router.navigateByUrl('item');
+          }
+          else
+          {
+            this.error = resp.msg;
+            console.log(this.error);
           }
         }
       );

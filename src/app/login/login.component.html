@@ -6,21 +6,28 @@
         <div class="form">
             <form [formGroup]="loginForm">
                 <div>
+                    <mat-error *ngIf ="error"></mat-error>
+                </div>
+                <div>
                     <mat-label>Username </mat-label>
                     <input mat-Input formControlName="name" name="name">
+                    <mat-error *ngIf="loginForm.get('name')?.hasError('pattern')">Only alphabets and numbers are
+                        allowed</mat-error>
                 </div>
                 <div>
                     <mat-label>Password </mat-label>
-                    <input mat-Input formControlName="password" name="password" type="password">
+                    <input mat-Input formControlName="password" name="password" type= "password">
+                    <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button> -->
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('pattern')">Password should be a combination of lowercase, uppercase, digit, special characters['!','@','#','$','%','^','&,'*'] and atleast 8 digits</mat-error>
                 </div>
-                <mat-error *ngIf="loginForm.get('name')?.hasError('pattern')">Only alphabets and numbers are
-                    allowed</mat-error>
                 <div>
                     <button mat-raised-button color="primary" (click)="OnSubmit()" [disabled]="loginForm.invalid">Login</button>
                     <button mat-raised-button (click)="onClickCreate()">Create Account</button>
                 </div>
                 <div>
-                    <a href="">Forgot Password</a>
+                    <a [routerLink] = "['/reset']">Forgot Password</a>
                 </div>
             </form>
         </div>

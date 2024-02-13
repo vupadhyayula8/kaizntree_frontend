@@ -1,0 +1,31 @@
+<div class ="logo-container">
+    <img class = "logo" src = "../../assets/images/kaizntree.png"/>
+</div>
+<div class = "login">
+    <mat-card>
+        <div class = "form">
+            <form [formGroup]="resetForm" (ngSubmit)="OnSubmit()">
+                <div>
+                    <mat-label>Username </mat-label>
+                    <input mat-Input formControlName="name" name="name">
+                    <mat-error *ngIf="resetForm.get('name')?.hasError('pattern')">Only alphabets and numbers are
+                        allowed in the username</mat-error>
+                </div>
+                <div>
+                    <mat-label>New Password </mat-label>
+                    <input mat-Input formControlName="password" name="password" type="password">
+                    <mat-error *ngIf="resetForm.get('password')?.hasError('pattern')">Password should be a combination of lowercase, uppercase, digit, special characters['!','@','#','$','%','^','&,'*'] and atleast 8 digits</mat-error>
+                </div>
+                <div>
+                    <mat-label>Re-enter New Password </mat-label>
+                    <input mat-Input formControlName="confirmpassword" name="confirmpassword" type="password"
+                    required pattern="{{resetForm.value.password}}">
+                    <mat-error *ngIf="resetForm.get('confirmpassword')?.hasError('pattern')">Passwords do not match.</mat-error>
+                </div>
+                <div>
+                    <button mat-raised-button [disabled]="!resetForm.valid">Reset Account</button>
+                </div>
+            </form>
+        </div>
+    </mat-card>
+</div>

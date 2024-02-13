@@ -4,11 +4,13 @@ import { ItemComponent } from './item/item.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { CreateComponent } from './create/create.component';
+import { ResetComponent } from './reset/reset.component';
 
 const routes: Routes = [
-  {path :'item',canActivate:[AuthGuard],component:ItemComponent},
+  {path :'item',component:ItemComponent},
   {path :'login',component:LoginComponent},
   {path :'register',component:CreateComponent},
+  {path :'reset',component:ResetComponent},
   {path:'',redirectTo:'login',pathMatch:'full'}
 ];
 
