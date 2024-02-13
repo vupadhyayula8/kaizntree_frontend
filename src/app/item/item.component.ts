@@ -36,7 +36,6 @@ export class ItemComponent implements OnInit{
     this.dataSource.data = this.getData();
  }
  displayColumns:string[]=['select','sku', 'name','tags','category','inStock','availableStock']
- //displayColumns: string[] = ['select','position', 'name', 'weight', 'symbol'];
  isAllSelected() {
   const numSelected = this.selection.selected.length;
   const numRows = this.dataSource.data.length;
@@ -50,6 +49,7 @@ masterToggle() {
 getData(): any
 {
   const username = localStorage.getItem('token');
+  console.log()
   this.apiService.itemData(username).subscribe(
     (resp)=>
     {

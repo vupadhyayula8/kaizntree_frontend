@@ -16,6 +16,7 @@ export class CreateComponent {
     confirmpassword :new FormControl('',Validators.required)
    })
    registered = false;
+   error:string ="";
    OnSubmit()
   {
     if(this.registerForm.valid)
@@ -23,18 +24,19 @@ export class CreateComponent {
       this.apiService.register(this.registerForm.value.name,this.registerForm.value.password).subscribe(
         (resp)=>
         {
-          if(resp.status == 200)
+          console.log(resp);
+          if(resp.status)
           {
-            if(resp == true)
-            {
+            
               this.registered = true;
               this.router.navigateByUrl('/login');
-            }
+          }
             else
             {
+              this.error = resp.msg;
               this.registered = false;
             }
-          }
+          
         }
       );
     }

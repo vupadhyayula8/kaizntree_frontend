@@ -7,7 +7,7 @@ import { CreateComponent } from './create/create.component';
 import { ResetComponent } from './reset/reset.component';
 
 const routes: Routes = [
-  {path :'item',component:ItemComponent},
+  {path :'item',canActivate:[AuthGuard],component:ItemComponent},
   {path :'login',component:LoginComponent},
   {path :'register',component:CreateComponent},
   {path :'reset',component:ResetComponent},

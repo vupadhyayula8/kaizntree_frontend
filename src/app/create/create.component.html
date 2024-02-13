@@ -6,6 +6,9 @@
         <div class = "form">
             <form [formGroup]="registerForm" (ngSubmit)="OnSubmit()">
                 <div>
+                    <mat-error *ngIf = "error!=''">{{error}}</mat-error>
+                </div>
+                <div>
                     <mat-label>Username </mat-label>
                     <input mat-Input formControlName="name" name="name">
                     <mat-error *ngIf="registerForm.get('name')?.hasError('pattern')">Only alphabets and numbers are

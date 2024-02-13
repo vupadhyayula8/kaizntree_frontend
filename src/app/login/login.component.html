@@ -6,7 +6,7 @@
         <div class="form">
             <form [formGroup]="loginForm">
                 <div>
-                    <mat-error *ngIf ="error"></mat-error>
+                    <mat-error *ngIf ="error">{{error}}</mat-error>
                 </div>
                 <div>
                     <mat-label>Username </mat-label>
