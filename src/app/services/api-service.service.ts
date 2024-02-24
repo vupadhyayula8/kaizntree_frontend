@@ -38,7 +38,7 @@ export class ApiServiceService {
      {headers:this.httpHeaders});
 
     // return this.http.post('http://127.0.0.1:8000/fetch_items', {'username':username},
-    // {headers:this.httpHeaders});
+    // {headers:this.httpHeaders});;
 
   }
 }
